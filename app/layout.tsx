@@ -3,6 +3,7 @@ import './globals.css'
 import CustomCursor from '@/components/CustomCursor'
 import SmoothScroll from '@/components/SmoothScroll'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Wheelze - Custom Development Agency',
@@ -22,6 +23,7 @@ export default function RootLayout({
         <Navigation />
         <SmoothScroll>
           {children}
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

@@ -5,6 +5,10 @@ import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+import Testimonials from '@/components/Testimonials'
+
+const Scene3D = dynamic(() => import('@/components/3d/Scene3D'), { ssr: false })
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -67,9 +71,14 @@ export default function Home() {
       {/* HERO - PROFESSIONAL & ESTABLISHED */}
       <section
         ref={heroRef}
-        className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-midnight-navy to-deep-charcoal"
+        className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-midnight-navy to-deep-charcoal overflow-hidden"
       >
-        <div className="container mx-auto px-6 lg:px-12 text-center">
+        {/* 3D Background Element */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <Scene3D />
+        </div>
+
+        <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
           <motion.div
             className="hero-element mb-6"
             initial={{ opacity: 0 }}
@@ -185,6 +194,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS */}
+      <Testimonials />
 
       {/* EXPERIMENTAL SECTION */}
       <section
